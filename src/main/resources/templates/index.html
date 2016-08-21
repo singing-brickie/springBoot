@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <script type="text/javascript">
+       function myFunction() {
+       var userName = document.getElementById("userName").value;
+       var password=document.getElementById("password").value;
+
+    $.ajax({
+  type: "GET",
+  url: "/login/"+userName+"/"+password,
+  success:function(data) {
+
+   window.open ("http://localhost:8080/"+data);
+
+   }
+});
+
+
+
+ }
+    </script>
+
+
+    <title>Home Page</title>
+</head>
+<body>
+<div class="container row">
+
+    <div class="col-md-offset-5 col-md-3">
+        <div class="form-login">
+            <h4>Welcome back.</h4>
+            <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+            <br>
+            <input type="text" id="password" class="form-control input-sm chat-input" placeholder="password" />
+            </br>
+            <div class="wrapper">
+            <span class="group-btn">
+                <button onclick="myFunction()" class="btn btn-primary btn-md">login </button>
+            </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
